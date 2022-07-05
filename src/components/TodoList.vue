@@ -1,12 +1,13 @@
 <template>
-  <div class="todo">
-    <VInput v-model="todoInput" />
-    <button class="todo__button" @click="addTodo">Добавить</button>
+  <div class="todo" data-test="todo-list">
+    <VInput v-model="todoInput" data-test="input" />
+    <button class="todo__button" data-test="add-button" @click="addTodo">Добавить</button>
     <ul class="todo__list">
       <TodoItem
         v-for="item of todoItems"
         :id="item.id"
         :key="item.id"
+        data-test="item"
         class="todo__item"
         :text="item.text"
         :is-complete="item.isComplete"

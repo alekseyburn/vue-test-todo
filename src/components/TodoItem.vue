@@ -1,8 +1,22 @@
 <template>
-  <li class="todo-item">
-    <p class="todo-item__text" :class="{ 'todo-item__text--complete': isComplete }">{{ text }}</p>
-    <button class="todo-item__button" @click="$emit('toggleComplete', id)">✓</button>
-    <button class="todo-item__button" @click="$emit('deleteItem', id)">X</button>
+  <li class="todo-item" data-test="todo-item">
+    <p
+      :class="{ 'todo-item__text--complete': isComplete }"
+      class="todo-item__text"
+      data-test="text"
+    >
+      {{ text }}
+    </p>
+    <button
+      class="todo-item__button"
+      data-test="toggle-complete"
+      @click="$emit('toggleComplete', id)"
+    >
+      ✓
+    </button>
+    <button class="todo-item__button" data-test="delete-item" @click="$emit('deleteItem', id)">
+      X
+    </button>
   </li>
 </template>
 
@@ -18,7 +32,8 @@ defineProps({
   },
   id: {
     type: Number,
-    default: null,
+    // default: null,
+    required: true,
   },
 });
 defineEmits(['toggleComplete', 'deleteItem']);
@@ -38,6 +53,7 @@ defineEmits(['toggleComplete', 'deleteItem']);
 
   &__text {
     max-width: 450px;
+
     &--complete {
       border-color: green !important;
       text-decoration: line-through;

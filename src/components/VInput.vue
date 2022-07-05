@@ -1,6 +1,7 @@
 <template>
   <label class="v-input">
     <input
+      data-test="input"
       class="v-input__value"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
